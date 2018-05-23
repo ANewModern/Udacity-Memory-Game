@@ -30,12 +30,12 @@ const onCardClick = (cardNumber) => {
                     completedPairs = completedPairs.concat(cardPairs);
                     console.log('Completed Pairs: ', completedPairs);
                     checkCompletion();
-                    cards[cardPairs[0]].querySelector('.back').style.background = 'yellow';
-                    cards[cardPairs[1]].querySelector('.back').style.background = 'yellow';
+                    cards[cardPairs[0]].querySelector('.back').style.background = '#13E2BA';
+                    cards[cardPairs[1]].querySelector('.back').style.background = '#13E2BA';
                 } else { // else flip the cards to the default position
                     let cardPairOne = cardPairs[0];
                     let cardPairTwo = cardPairs[1];
-                    setTimeout(function () { //Waits 1.2 seconds before removing the class and flipping the card.
+                    setTimeout(() => { //Waits 1.2 seconds before removing the class and flipping the card.
                         cards[cardPairOne].classList.toggle("flip");
                         cards[cardPairTwo].classList.toggle("flip");
                     }, 1200);

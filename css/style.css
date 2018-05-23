@@ -1,25 +1,10 @@
 * {
     box-sizing: border-box;
 }
-/*
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; 
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-}
-*/
 
 .counter-container {
-    width: 650px;
+    width: 640px;
     height: 50px;
-    border: 1px solid black;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -30,9 +15,9 @@ main {
 }
 
 .container {
-    width: 650px;
-    height: 650px;
-    border: 1px solid black;
+    width: 640px;
+    height: 640px;
+    border-radius: 15px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -42,16 +27,13 @@ main {
     right: 0;
     top: 58px;
     margin: auto;
+    background: linear-gradient(45deg, #00CEBA, #AE7CD2);
 }
-
-/* entire container, keeps perspective */
 
 .flip-container {
     perspective: 1000px;
     transition: 0.6s;
 }
-
-/* flip the pane when hovered */
 
 .flip-container.flip .card {
     transform: rotateY(180deg);
@@ -62,20 +44,17 @@ main {
 .back {
     width: 130px;
     height: 130px;
+    border-radius: 15px;
+    cursor: pointer;
 }
-
-/* flip speed goes here */
 
 .card {
     transition: 0.6s;
     transform-style: preserve-3d;
     width: 130px;
     height: 130px;
-    border: 1px solid black;
     position: relative;
 }
-
-/* hide back of pane during swap */
 
 .front,
 .back {
@@ -85,21 +64,21 @@ main {
     left: 0;
 }
 
-/* front pane, placed above back */
-
 .front {
     z-index: 2;
     /* for firefox 31 */
     transform: rotateY(0deg);
-    background: red;
+    background: #2E3C47;
 }
-
-/* back, initially hidden pane */
 
 .back {
     transform: rotateY(180deg);
-    background: blue;
+    background:#12C1DF;
     text-align: center;
     vertical-align: middle;
     line-height: 130px;
+}
+
+.reset {
+    cursor: pointer;
 }
