@@ -22,11 +22,14 @@ const onCardClick = (cardNumber) => {
         cards[cardNumber].classList.toggle("flip"); //toggles a class for the flip-container clicked on
         if (cardPairs.indexOf(cardNumber) === -1) { // checks if the card clicked on is in the array cardPairs
             cardPairs.push(cardNumber);
-            console.log(cardPairs);
+            console.log('Cards Selected: ', cardPairs);
+            moveCounter += 1;
+            document.querySelector('#moves').innerHTML = moveCounter;
             if (cardPairs.length === 2) { //checks to see if two cards have been clicked on
                 if (cardNumbers[cardPairs[0]] === cardNumbers[cardPairs[1]]) { // if they are the same add them to the completed pairs list
                     completedPairs = completedPairs.concat(cardPairs);
                     console.log('Completed Pairs: ', completedPairs);
+                    checkCompletion();
                     cards[cardPairs[0]].querySelector('.back').style.background = 'yellow';
                     cards[cardPairs[1]].querySelector('.back').style.background = 'yellow';
                 } else { // else flip the cards to the default position
@@ -41,10 +44,42 @@ const onCardClick = (cardNumber) => {
     }
 }
 
+// Checks the completion of the game
+const checkCompletion = () => {
+    const completed = completedPairs.length / 4;
+    switch (completed) {
+        case 1:
+            document.querySelector('.completed').innerHTML = '★☆☆☆';
+            break;
+        case 2:
+            document.querySelector('.completed').innerHTML = '★★☆☆';
+            break;
+        case 3:
+            document.querySelector('.completed').innerHTML = '★★★☆';
+            break;
+        case 4:
+            document.querySelector('.completed').innerHTML = '★★★★';
+            break;
+    }
+}
+
+// ★ ☆ stars for using later
 let cards = document.querySelectorAll('.flip-container'); //NodeList for all divs with class flip-container
 let cardPairs = []; //Stores pairs to check if they are valid
 let completedPairs = []; //Completed pairs are stored here
+let moveCounter = 0; // Number of moves done
 const cardNumbers = shuffle([1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]); //Game array, pairs that each belong to one card
+const reset = document.querySelector('.reset').addEventListener('click', () => { //Resets the game
+    cardPairs = [];
+    completedPairs = [];
+    moveCounter = 0;
+    document.querySelector('.completed').innerHTML = '☆☆☆☆';
+    document.querySelector('#moves').innerHTML = 0;
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].classList.remove("flip");
+    }
+    console.log('Game Reset');
+});
 
 for (let i = 0; i < cards.length; i++) {
     cards[i].querySelector('.back').innerHTML = cardNumbers[i]; //Sets a value for the 'back' of a card using the cardNumbers array

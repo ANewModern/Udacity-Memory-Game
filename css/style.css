@@ -1,21 +1,47 @@
 * {
     box-sizing: border-box;
 }
-
-.container {
-    width: 650px;
-    height: 650px;
+/*
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
     margin: auto;
+}
+*/
+
+.counter-container {
+    width: 650px;
+    height: 50px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.container {
+    width: 650px;
+    height: 650px;
     border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 58px;
+    margin: auto;
 }
 
 /* entire container, keeps perspective */
