@@ -22,9 +22,10 @@ const onCardClick = (cardNumber) => {
 		if (cardPairs.indexOf(cardNumber) === -1) { // checks if the card clicked on is in the array cardPairs
 			cardPairs.push(cardNumber);
 			console.log('Cards Selected: ', cardPairs);
-			moveCounter += 1;
-			document.querySelector('#moves').innerHTML = moveCounter;
 			if (cardPairs.length === 2) { //checks to see if two cards have been clicked on
+				moveCounter += 1;
+				document.querySelector('#moves').innerHTML = moveCounter;
+				checkRating();
 				if (cardNumbers[cardPairs[0]] === cardNumbers[cardPairs[1]]) { // if they are the same add them to the completed pairs list
 					completedPairs = completedPairs.concat(cardPairs);
 					console.log('Completed Pairs: ', completedPairs);
@@ -46,42 +47,45 @@ const onCardClick = (cardNumber) => {
 		}
 	}
 }
+// Checks how many moves have been done and rates the progress
+const checkRating = () => {
+	if (moveCounter > 15) {
+		rating = '★☆☆';
+		document.querySelector('.completed').innerHTML = `${rating} <span id="moves">${moveCounter}</span> Moves`;
+	} else if (moveCounter > 10) {
+		rating = '★★☆';
+		document.querySelector('.completed').innerHTML = `${rating} <span id="moves">${moveCounter}</span> Moves`;
+	}
+}
 // Checks the completion of the game
 const checkCompletion = () => {
-	const completed = completedPairs.length / 4;
-	switch (completed) {
-		case 1:
-			document.querySelector('.completed').innerHTML = `★☆☆☆ <span id="moves">${moveCounter}</span> Moves`;
-			break;
-		case 2:
-			document.querySelector('.completed').innerHTML = `★★☆☆ <span id="moves">${moveCounter}</span> Moves`;
-			break;
-		case 3:
-			document.querySelector('.completed').innerHTML = `★★★☆ <span id="moves">${moveCounter}</span> Moves`;
-			break;
-		case 4:
-			document.querySelector('.completed').innerHTML = `★★★★ <span id="moves">${moveCounter}</span> Moves`;
-			setTimeout(() => {
-				document.querySelector('#winning-dialog').innerHTML = `You won in ${moveCounter} moves!`
-				document.querySelector('.container').style.display = 'none';
-				document.querySelector('.counter-container').style.display = 'none';
-				document.querySelector('.completed-container').style.display = 'flex';
-			}, 1500);
-			break;
+	const completed = completedPairs.length;
+	if (completed === 16) {
+		setTimeout(() => {
+			document.querySelector('#winning-dialog').innerHTML = `You won in ${moveCounter} moves and a rating of ${rating} stars!`
+			document.querySelector('.container').style.display = 'none';
+			document.querySelector('.counter-container').style.display = 'none';
+			document.querySelector('.completed-container').style.display = 'flex';
+		}, 1500);
 	}
 }
 const resetGame = () => { //Resets the game
 	cardPairs = [];
 	completedPairs = [];
 	moveCounter = 0;
-	document.querySelector('.completed').innerHTML = `☆☆☆☆ <span id="moves">${moveCounter}</span> Moves`;
+	rating = '★★★';
+	document.querySelector('.completed').innerHTML = `${rating} <span id="moves">${moveCounter}</span> Moves`;
 	document.querySelector('#moves').innerHTML = 0;
 	cardNumbers = shuffle(icons.concat(icons));
 	for (let i = 0; i < cards.length; i++) {
 		cards[i].classList.remove("flip");
 		cards[i].querySelector('.back').style.background = '#12C1DF';
-		cards[i].querySelector('.back').innerHTML = cardNumbers[i];
 	}
+	setTimeout(() => { //this is seperate so the card backs changes after the card flip animation finishes
+		for (let i = 0; i < cards.length; i++) {
+			cards[i].querySelector('.back').innerHTML = cardNumbers[i];
+		}
+	}, 500);
 	document.querySelector('.container').style.display = 'flex';
 	document.querySelector('.counter-container').style.display = 'flex';
 	document.querySelector('.completed-container').style.display = 'none';
@@ -92,6 +96,7 @@ let cards = document.querySelectorAll('.flip-container'); //NodeList for all div
 let cardPairs = []; //Stores pairs to check if they are valid
 let completedPairs = []; //Completed pairs are stored here
 let moveCounter = 0; // Number of moves done
+let rating = '★★★';
 const icons = ['☎', '📷', '🎮', '🎬', '⚓', '🕮', '⌚', '🗑']; //icons used in game
 let cardNumbers = shuffle(icons.concat(icons)); //Game array, pairs that each belong to one card
 const reset = document.querySelector('.reset').addEventListener('click', () => resetGame());
