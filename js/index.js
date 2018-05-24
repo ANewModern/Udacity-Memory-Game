@@ -63,10 +63,12 @@ const checkCompletion = () => {
             break;
         case 4:
             document.querySelector('.completed').innerHTML = `★★★★ <span id="moves">${moveCounter}</span> Moves`;
-            document.querySelector('#winning-dialog').innerHTML = `You won in ${moveCounter} moves!`
-            document.querySelector('.container').style.display = 'none';
-            document.querySelector('.counter-container').style.display = 'none';
-            document.querySelector('.completed-container').style.display = 'flex';
+            setTimeout(() => {
+                document.querySelector('#winning-dialog').innerHTML = `You won in ${moveCounter} moves!`
+                document.querySelector('.container').style.display = 'none';
+                document.querySelector('.counter-container').style.display = 'none';
+                document.querySelector('.completed-container').style.display = 'flex';
+            }, 1500);
             break;
     }
 }
