@@ -1,129 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Udacity Memory Game</title>
-    <link rel="stylesheet" href="css/style.css">
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<title>Udacity Memory Game</title>
+	<link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Memory Game</h1>
-    </header>
-    <main>
-        <div class="counter-container">
-            <div class="completed">☆☆☆☆ <span id='moves'>0</span> Moves</div> 
-            <div class="reset">↺</div>
-        </div>
-        <div class="container">
-            <!-- (.flip-container.flip-container-$>.card>.front.back)*16 Emmet Code for HTML -->
-            <div class="flip-container flip-container-1">
-                <div class="card">
-                    <div class="front"></div>
-                    <div class="back"></div>
-                </div>
-            </div>
-            <div class="flip-container flip-container-2">
-                <div class="card">
-                    <div class="front"></div>
-                    <div class="back"></div>
-                </div>
-            </div>
-            <div class="flip-container flip-container-3">
-                <div class="card">
-                    <div class="front"></div>
-                    <div class="back"></div>
-                </div>
-            </div>
-            <div class="flip-container flip-container-4">
-                <div class="card">
-                    <div class="front"></div>
-                    <div class="back"></div>
-                </div>
-            </div>
-            <div class="flip-container flip-container-5">
-                <div class="card">
-                    <div class="front"></div>
-                    <div class="back"></div>
-                </div>
-            </div>
-            <div class="flip-container flip-container-6">
-                <div class="card">
-                    <div class="front"></div>
-                    <div class="back"></div>
-                </div>
-            </div>
-            <div class="flip-container flip-container-7">
-                <div class="card">
-                    <div class="front"></div>
-                    <div class="back"></div>
-                </div>
-            </div>
-            <div class="flip-container flip-container-8">
-                <div class="card">
-                    <div class="front"></div>
-                    <div class="back"></div>
-                </div>
-            </div>
-            <div class="flip-container flip-container-9">
-                <div class="card">
-                    <div class="front"></div>
-                    <div class="back"></div>
-                </div>
-            </div>
-            <div class="flip-container flip-container-10">
-                <div class="card">
-                    <div class="front"></div>
-                    <div class="back"></div>
-                </div>
-            </div>
-            <div class="flip-container flip-container-11">
-                <div class="card">
-                    <div class="front"></div>
-                    <div class="back"></div>
-                </div>
-            </div>
-            <div class="flip-container flip-container-12">
-                <div class="card">
-                    <div class="front"></div>
-                    <div class="back"></div>
-                </div>
-            </div>
-            <div class="flip-container flip-container-13">
-                <div class="card">
-                    <div class="front"></div>
-                    <div class="back"></div>
-                </div>
-            </div>
-            <div class="flip-container flip-container-14">
-                <div class="card">
-                    <div class="front"></div>
-                    <div class="back"></div>
-                </div>
-            </div>
-            <div class="flip-container flip-container-15">
-                <div class="card">
-                    <div class="front"></div>
-                    <div class="back"></div>
-                </div>
-            </div>
-            <div class="flip-container flip-container-16">
-                <div class="card">
-                    <div class="front"></div>
-                    <div class="back"></div>
-                </div>
-            </div>            
-        </div>
-        <div class="completed-container">
-            <h1>Congratulations! You Won!</h1>
-            <p id='winning-dialog'></p>
-            <button class='reset-button'>Replay</button>
-        </div>
-    </main>
-    <footer>
-        <a href="https://anewmodern.github.io/">Alberto Jaime Le Baron</a>
-    </footer>
-    <script  src="js/index.js"></script>
+	<header>
+		<h1>Memory Game</h1>
+	</header>
+	<main>
+		<div class="counter-container">
+			<div class="completed">
+				☆☆☆☆ <span id='moves'>0</span> Moves
+			</div>
+			<div class="reset">
+				↺
+			</div>
+		</div>
+		<div class="container">
+			<!-- (.flip-container.flip-container-$>.card>.front.back)*16 Emmet Code for HTML -->
+			<div class="flip-container flip-container-1">
+				<div class="card">
+					<div class="front"></div>
+					<div class="back"></div>
+				</div>
+			</div>
+			<div class="flip-container flip-container-2">
+				<div class="card">
+					<div class="front"></div>
+					<div class="back"></div>
+				</div>
+			</div>
+			<div class="flip-container flip-container-3">
+				<div class="card">
+					<div class="front"></div>
+					<div class="back"></div>
+				</div>
+			</div>
+			<div class="flip-container flip-container-4">
+				<div class="card">
+					<div class="front"></div>
+					<div class="back"></div>
+				</div>
+			</div>
+			<div class="flip-container flip-container-5">
+				<div class="card">
+					<div class="front"></div>
+					<div class="back"></div>
+				</div>
+			</div>
+			<div class="flip-container flip-container-6">
+				<div class="card">
+					<div class="front"></div>
+					<div class="back"></div>
+				</div>
+			</div>
+			<div class="flip-container flip-container-7">
+				<div class="card">
+					<div class="front"></div>
+					<div class="back"></div>
+				</div>
+			</div>
+			<div class="flip-container flip-container-8">
+				<div class="card">
+					<div class="front"></div>
+					<div class="back"></div>
+				</div>
+			</div>
+			<div class="flip-container flip-container-9">
+				<div class="card">
+					<div class="front"></div>
+					<div class="back"></div>
+				</div>
+			</div>
+			<div class="flip-container flip-container-10">
+				<div class="card">
+					<div class="front"></div>
+					<div class="back"></div>
+				</div>
+			</div>
+			<div class="flip-container flip-container-11">
+				<div class="card">
+					<div class="front"></div>
+					<div class="back"></div>
+				</div>
+			</div>
+			<div class="flip-container flip-container-12">
+				<div class="card">
+					<div class="front"></div>
+					<div class="back"></div>
+				</div>
+			</div>
+			<div class="flip-container flip-container-13">
+				<div class="card">
+					<div class="front"></div>
+					<div class="back"></div>
+				</div>
+			</div>
+			<div class="flip-container flip-container-14">
+				<div class="card">
+					<div class="front"></div>
+					<div class="back"></div>
+				</div>
+			</div>
+			<div class="flip-container flip-container-15">
+				<div class="card">
+					<div class="front"></div>
+					<div class="back"></div>
+				</div>
+			</div>
+			<div class="flip-container flip-container-16">
+				<div class="card">
+					<div class="front"></div>
+					<div class="back"></div>
+				</div>
+			</div>
+		</div>
+		<div class="completed-container">
+			<h1>Congratulations! You Won!</h1>
+			<p id='winning-dialog'></p><button class='reset-button'>Replay</button>
+		</div>
+	</main>
+	<footer>
+		<a href="https://anewmodern.github.io/">Alberto Jaime Le Baron</a>
+	</footer>
+	<script src="js/index.js">
+	</script>
 </body>
 </html>
