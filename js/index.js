@@ -81,6 +81,7 @@ const reset = document.querySelector('.reset').addEventListener('click', () => {
     document.querySelector('#moves').innerHTML = 0;
     for (let i = 0; i < cards.length; i++) {
         cards[i].classList.remove("flip");
+        cards[i].querySelector('.back').style.background = '#12C1DF';
     }
     console.log('Game Reset');
 });
