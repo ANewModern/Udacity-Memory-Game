@@ -8,15 +8,24 @@ footer {
 	position: absolute;
 	bottom: 0;
 }
+body, html {
+	background: url("../img/geometry2.png");
+	background-repeat: repeat;
+}
 main {
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
+	justify-content: center;
 	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
 }
 button {
 	background-color: #00CEBA;
-	/* Green */
 	border: none;
 	color: white;
 	padding: 15px 32px;
@@ -26,15 +35,15 @@ button {
 	font-size: 16px;
 }
 .counter-container {
-	width: 400px;
+	width: 300px;
 	height: 50px;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
 }
 .container {
-	width: 400px;
-	height: 400px;
+	width: 300px;
+	height: 300px;
 	border-radius: 15px;
 	display: flex;
 	flex-wrap: wrap;
@@ -45,8 +54,8 @@ button {
 }
 .completed-container {
 	display: none;
-	width: 400px;
-	height: 400px;
+	width: 300px;
+	height: 300px;
 	border-radius: 15px;
 	flex-direction: column;
 	justify-content: center;
@@ -60,16 +69,16 @@ button {
 	transform: rotateY(180deg);
 }
 .flip-container, .front, .back {
-	width: 80px;
-	height: 80px;
+	width: 60px;
+	height: 60px;
 	border-radius: 15px;
 	cursor: pointer;
 }
 .card {
 	transition: 0.6s;
 	transform-style: preserve-3d;
-	width: 80px;
-	height: 80px;
+	width: 60px;
+	height: 60px;
 	position: relative;
 }
 .front, .back {
@@ -89,10 +98,91 @@ button {
 	background: #12C1DF;
 	text-align: center;
 	vertical-align: middle;
-	line-height: 80px;
+	line-height: 60px;
 	color: whitesmoke;
 	font-size: 30px;
 }
 .reset {
 	cursor: pointer;
+}
+@media screen and (min-width: 500px) {
+	.counter-container {
+		width: 500px;
+		height: 50px;
+		display: flex;
+	}
+	.container {
+		width: 500px;
+		height: 500px;
+	}
+	.completed-container {
+		width: 500px;
+		height: 500px;
+	}
+	.flip-container, .front, .back {
+		width: 105px;
+		height: 105px;
+	}
+	.card {
+		width: 105px;
+		height: 105px;
+	}
+	.back {
+		line-height: 105px;
+		font-size: 40px;
+	}
+}
+@media screen and (min-width: 700px) {
+	.counter-container {
+		width: 600px;
+		height: 50px;
+		display: flex;
+	}
+	.container {
+		width: 600px;
+		height: 600px;
+	}
+	.completed-container {
+		width: 600px;
+		height: 600px;
+	}
+	.flip-container, .front, .back {
+		width: 120px;
+		height: 120px;
+	}
+	.card {
+		width: 120px;
+		height: 120px;
+	}
+	.back {
+		line-height: 120px;
+		font-size: 40px;
+	}
+}
+@media screen and (min-width: 1000px) {
+	.counter-container {
+		width: 700px;
+		height: 50px;
+		display: flex;
+	}
+	.container {
+		width: 700px;
+		height: 700px;
+	}
+	.completed-container {
+		width: 700px;
+		height: 700px;
+	}
+	.flip-container, .front, .back {
+		width: 150px;
+		height: 150px;
+	}
+	.card {
+		width: 150px;
+		height: 150px;
+	}
+	.back {
+		line-height: 150px;
+		font-size: 60px;
+	}
 }

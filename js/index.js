@@ -76,7 +76,7 @@ const resetGame = () => { //Resets the game
 	moveCounter = 0;
 	document.querySelector('.completed').innerHTML = `☆☆☆☆ <span id="moves">${moveCounter}</span> Moves`;
 	document.querySelector('#moves').innerHTML = 0;
-	cardNumbers = shuffle(['☎', '☎', '📷', '📷', '🎮', '🎮', '🎬', '🎬', '⚓', '⚓', '🕮', '🕮', '⌚', '⌚', '🗑', '🗑']);
+	cardNumbers = shuffle(icons.concat(icons));
 	for (let i = 0; i < cards.length; i++) {
 		cards[i].classList.remove("flip");
 		cards[i].querySelector('.back').style.background = '#12C1DF';
@@ -92,7 +92,8 @@ let cards = document.querySelectorAll('.flip-container'); //NodeList for all div
 let cardPairs = []; //Stores pairs to check if they are valid
 let completedPairs = []; //Completed pairs are stored here
 let moveCounter = 0; // Number of moves done
-let cardNumbers = shuffle(['☎', '☎', '📷', '📷', '🎮', '🎮', '🎬', '🎬', '⚓', '⚓', '🕮', '🕮', '⌚', '⌚', '🗑', '🗑']); //Game array, pairs that each belong to one card
+const icons = ['☎', '📷', '🎮', '🎬', '⚓', '🕮', '⌚', '🗑']; //icons used in game
+let cardNumbers = shuffle(icons.concat(icons)); //Game array, pairs that each belong to one card
 const reset = document.querySelector('.reset').addEventListener('click', () => resetGame());
 const resetButton = document.querySelector('.reset-button').addEventListener('click', () => resetGame());
 for (let i = 0; i < cards.length; i++) {
