@@ -3,6 +3,7 @@
 }
 header, footer {
 	text-align: center;
+	background: transparent;
 }
 footer {
 	position: absolute;

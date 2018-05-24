@@ -15,10 +15,30 @@ const shuffle = (array) => {
 	}
 	return array;
 }
+//Converts milliseconds to minutes and seconds
+function millisToMinutesAndSeconds(ms) {
+	const minutes = Math.floor(ms / 60000);
+	const seconds = ((ms % 60000) / 1000).toFixed(0);
+
+	let minuteStr = minutes.toString(10);
+    if (minuteStr.length === 1) {
+		return `0${minutes}:${(seconds < 10 ? '0' : '') + seconds}`;
+	} else {
+		return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+	}
+	
+}
 //When the user clicks on a card, this code runs
 const onCardClick = (cardNumber) => {
 	if (completedPairs.indexOf(cardNumber) === -1) { // checks if the card clicked on is already in the array completedPairs
 		cards[cardNumber].classList.toggle("flip"); //toggles a class for the flip-container clicked on
+		if (timerStart) { // Timer starts as soon as the cards is click on
+			timerStart = false;
+			timer = setInterval(() => {
+				ms += 1000;
+				document.querySelector('.timer').innerHTML = millisToMinutesAndSeconds(ms);
+			}, 1000);
+		}
 		if (cardPairs.indexOf(cardNumber) === -1) { // checks if the card clicked on is in the array cardPairs
 			cardPairs.push(cardNumber);
 			console.log('Cards Selected: ', cardPairs);
@@ -61,8 +81,9 @@ const checkRating = () => {
 const checkCompletion = () => {
 	const completed = completedPairs.length;
 	if (completed === 16) {
+		clearInterval(timer);
 		setTimeout(() => {
-			document.querySelector('#winning-dialog').innerHTML = `You won in ${moveCounter} moves and a rating of ${rating} stars!`
+			document.querySelector('#winning-dialog').innerHTML = `You won in ${moveCounter} moves and ${millisToMinutesAndSeconds(ms)} minutes with a rating of ${rating} stars!`
 			document.querySelector('.container').style.display = 'none';
 			document.querySelector('.counter-container').style.display = 'none';
 			document.querySelector('.completed-container').style.display = 'flex';
@@ -79,10 +100,10 @@ const resetGame = () => { //Resets the game
 	cardNumbers = shuffle(icons.concat(icons));
 	for (let i = 0; i < cards.length; i++) {
 		cards[i].classList.remove("flip");
-		cards[i].querySelector('.back').style.background = '#12C1DF';
 	}
 	setTimeout(() => { //this is seperate so the card backs changes after the card flip animation finishes
 		for (let i = 0; i < cards.length; i++) {
+			cards[i].querySelector('.back').style.background = '#12C1DF';
 			cards[i].querySelector('.back').innerHTML = cardNumbers[i];
 		}
 	}, 500);
@@ -96,7 +117,10 @@ let cards = document.querySelectorAll('.flip-container'); //NodeList for all div
 let cardPairs = []; //Stores pairs to check if they are valid
 let completedPairs = []; //Completed pairs are stored here
 let moveCounter = 0; // Number of moves done
-let rating = '★★★';
+let rating = '★★★'; // Star ratings
+let ms = 0; // Amount of milliseconds that have passed
+let timerStart = true; // starts the timer
+let timer; // timer variable, later set when the player clicks on a card
 const icons = ['☎', '📷', '🎮', '🎬', '⚓', '🕮', '⌚', '🗑']; //icons used in game
 let cardNumbers = shuffle(icons.concat(icons)); //Game array, pairs that each belong to one card
 const reset = document.querySelector('.reset').addEventListener('click', () => resetGame());
