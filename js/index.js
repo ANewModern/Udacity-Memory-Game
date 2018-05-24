@@ -100,6 +100,10 @@ const resetGame = () => { //Resets the game
 	cardPairs = [];
 	completedPairs = [];
 	moveCounter = 0;
+	clearInterval(timer);
+	ms = 0;
+	document.querySelector('.timer').innerHTML = millisToMinutesAndSeconds(ms);
+	timerStart = true;
 	rating = '★★★';
 	document.querySelector('.completed').innerHTML = `${rating} <span id="moves">${moveCounter}</span> Moves`;
 	document.querySelector('#moves').innerHTML = 0;
