@@ -55,9 +55,15 @@ const onCardClick = (cardNumber) => {
 				} else { // else flip the cards to the default position
 					let cardPairOne = cardPairs[0];
 					let cardPairTwo = cardPairs[1];
-					setTimeout(() => { //Waits 1.2 seconds before removing the class and flipping the card.
+					cards[cardPairs[0]].querySelector('.back').style.background = '#F95B3C';
+					cards[cardPairs[1]].querySelector('.back').style.background = '#F95B3C';
+					setTimeout(() => { //Waits .5 seconds before removing the class and flipping the card.
 						cards[cardPairOne].classList.toggle("flip");
 						cards[cardPairTwo].classList.toggle("flip");
+					}, 500);
+					setTimeout(() => {
+						cards[cardPairOne].querySelector('.back').style.background = '#12C1DF';
+						cards[cardPairOne].querySelector('.back').style.background = '#12C1DF';
 					}, 800);
 				}
 				cardPairs = []; // empty the cardPair array
