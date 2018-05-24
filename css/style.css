@@ -38,6 +38,16 @@ main {
     background: linear-gradient(45deg, #00CEBA, #AE7CD2);
 }
 
+.completed-container {
+    display: none;
+    width: 400px;
+    height: 400px;
+    border-radius: 15px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .flip-container {
     perspective: 1000px;
     transition: 0.6s;

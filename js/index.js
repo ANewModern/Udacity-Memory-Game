@@ -38,7 +38,7 @@ const onCardClick = (cardNumber) => {
                     setTimeout(() => { //Waits 1.2 seconds before removing the class and flipping the card.
                         cards[cardPairOne].classList.toggle("flip");
                         cards[cardPairTwo].classList.toggle("flip");
-                    }, 1200);
+                    }, 800);
                 }
                 cardPairs = []; // empty the cardPair array
             }
@@ -63,8 +63,30 @@ const checkCompletion = () => {
             break;
         case 4:
             document.querySelector('.completed').innerHTML = `★★★★ <span id="moves">${moveCounter}</span> Moves`;
+            document.querySelector('#winning-dialog').innerHTML = `You won in ${moveCounter} moves!`
+            document.querySelector('.container').style.display = 'none';
+            document.querySelector('.counter-container').style.display = 'none';
+            document.querySelector('.completed-container').style.display = 'flex';
             break;
     }
+}
+
+const resetGame = () => { //Resets the game
+    cardPairs = [];
+    completedPairs = [];
+    moveCounter = 0;
+    document.querySelector('.completed').innerHTML = `☆☆☆☆ <span id="moves">${moveCounter}</span> Moves`;
+    document.querySelector('#moves').innerHTML = 0;
+    cardNumbers = shuffle([1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]);
+    for (let i = 0; i < cards.length; i++) {
+        cards[i].classList.remove("flip");
+        cards[i].querySelector('.back').style.background = '#12C1DF';
+        cards[i].querySelector('.back').innerHTML = cardNumbers[i];
+    }
+    document.querySelector('.container').style.display = 'flex';
+    document.querySelector('.counter-container').style.display = 'flex';
+    document.querySelector('.completed-container').style.display = 'none';
+    console.log('Game Reset');
 }
 
 // ★ ☆ stars for using later
@@ -72,19 +94,9 @@ let cards = document.querySelectorAll('.flip-container'); //NodeList for all div
 let cardPairs = []; //Stores pairs to check if they are valid
 let completedPairs = []; //Completed pairs are stored here
 let moveCounter = 0; // Number of moves done
-const cardNumbers = shuffle([1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]); //Game array, pairs that each belong to one card
-const reset = document.querySelector('.reset').addEventListener('click', () => { //Resets the game
-    cardPairs = [];
-    completedPairs = [];
-    moveCounter = 0;
-    document.querySelector('.completed').innerHTML = `☆☆☆☆ <span id="moves">${moveCounter}</span> Moves`;
-    document.querySelector('#moves').innerHTML = 0;
-    for (let i = 0; i < cards.length; i++) {
-        cards[i].classList.remove("flip");
-        cards[i].querySelector('.back').style.background = '#12C1DF';
-    }
-    console.log('Game Reset');
-});
+let cardNumbers = shuffle([1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8]); //Game array, pairs that each belong to one card
+const reset = document.querySelector('.reset').addEventListener('click', () => resetGame());
+const resetButton = document.querySelector('.reset-button').addEventListener('click', () => resetGame());
 
 for (let i = 0; i < cards.length; i++) {
     cards[i].querySelector('.back').innerHTML = cardNumbers[i]; //Sets a value for the 'back' of a card using the cardNumbers array
