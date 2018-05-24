@@ -53,16 +53,16 @@ const checkCompletion = () => {
     const completed = completedPairs.length / 4;
     switch (completed) {
         case 1:
-            document.querySelector('.completed').innerHTML = '★☆☆☆';
+            document.querySelector('.completed').innerHTML = `★☆☆☆ <span id="moves">${moveCounter}</span> Moves`;
             break;
         case 2:
-            document.querySelector('.completed').innerHTML = '★★☆☆';
+            document.querySelector('.completed').innerHTML = `★★☆☆ <span id="moves">${moveCounter}</span> Moves`;
             break;
         case 3:
-            document.querySelector('.completed').innerHTML = '★★★☆';
+            document.querySelector('.completed').innerHTML = `★★★☆ <span id="moves">${moveCounter}</span> Moves`;
             break;
         case 4:
-            document.querySelector('.completed').innerHTML = '★★★★';
+            document.querySelector('.completed').innerHTML = `★★★★ <span id="moves">${moveCounter}</span> Moves`;
             break;
     }
 }
@@ -77,7 +77,7 @@ const reset = document.querySelector('.reset').addEventListener('click', () => {
     cardPairs = [];
     completedPairs = [];
     moveCounter = 0;
-    document.querySelector('.completed').innerHTML = '☆☆☆☆';
+    document.querySelector('.completed').innerHTML = `☆☆☆☆ <span id="moves">${moveCounter}</span> Moves`;
     document.querySelector('#moves').innerHTML = 0;
     for (let i = 0; i < cards.length; i++) {
         cards[i].classList.remove("flip");
